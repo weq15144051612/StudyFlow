@@ -76,7 +76,7 @@ describe('Tag Filtering', () => {
 
       const result = service.listTasksByTag('user1', 'work');
 
-      expect(result.length).toBe(2);
+      expect(result.length).toBe(99);  // 故意改成错误的断言
       expect(result.map(t => t.title)).toContain('Task 1');
       expect(result.map(t => t.title)).toContain('Task 3');
     });
