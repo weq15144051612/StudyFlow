@@ -13,6 +13,7 @@ export interface TaskProps {
   createdAt?: Date;
   updatedAt?: Date;
   completedAt?: Date | null;
+  tags?: string[];
 }
 
 export class Task {
@@ -26,6 +27,7 @@ export class Task {
   public readonly createdAt: Date;
   public updatedAt: Date;
   public completedAt: Date | null;
+  public readonly tags: string[];
 
   constructor(props: TaskProps) {
     this.id = props.id || uuidv4();
@@ -38,6 +40,7 @@ export class Task {
     this.createdAt = props.createdAt || new Date();
     this.updatedAt = props.updatedAt || new Date();
     this.completedAt = props.completedAt || null;
+    this.tags = props.tags || [];
   }
 
   public complete(): void {

@@ -14,7 +14,8 @@ export class TaskServiceImpl implements TaskService {
       title: input.title,
       description: input.description,
       priority: input.priority,
-      dueDate: input.dueDate
+      dueDate: input.dueDate,
+      tags: input.tags
     });
     this.taskRepository.save(task);
     return task;
@@ -51,5 +52,9 @@ export class TaskServiceImpl implements TaskService {
     task.updateStatus(status);
     this.taskRepository.save(task);
     return task;
+  }
+
+  listTasksByTag(userId: string, tag: string): Task[] {
+    return this.taskRepository.findByTag(userId, tag);
   }
 }

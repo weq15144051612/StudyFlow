@@ -8,6 +8,7 @@ export interface CreateTaskCommand {
   description?: string;
   priority: Priority;
   dueDate: Date;
+  tags?: string[];
 }
 
 export interface TaskService {
@@ -17,6 +18,7 @@ export interface TaskService {
   listDueTasks(date: Date): Task[];
   getTaskById(taskId: string): Task | undefined;
   updateTaskStatus(taskId: string, status: TaskStatus): Task;
+  listTasksByTag(userId: string, tag: string): Task[];
 }
 
 export interface TaskRepository {
@@ -24,6 +26,7 @@ export interface TaskRepository {
   findById(id: string): Task | undefined;
   findByUserId(userId: string): Task[];
   findByDueDate(date: Date): Task[];
+  findByTag(userId: string, tag: string): Task[];
   delete(id: string): void;
 }
 

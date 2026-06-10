@@ -23,6 +23,12 @@ export class InMemoryTaskRepository implements TaskRepository {
     });
   }
 
+  findByTag(userId: string, tag: string): Task[] {
+    return Array.from(this.tasks.values()).filter(task => 
+      task.userId === userId && task.tags.includes(tag)
+    );
+  }
+
   delete(id: string): void {
     this.tasks.delete(id);
   }
